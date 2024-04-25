@@ -1,5 +1,9 @@
+import { FooterContainer } from "./styles";
+
 export function Footer() {
   return (
-    <footer>Footer</footer>
+    <FooterContainer>
+      <p>MKS sistemas © Todos os direitos reservados</p>
+    </FooterContainer>
   )
 }
