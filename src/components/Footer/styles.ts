@@ -5,7 +5,7 @@ export const FooterContainer = styled.footer`
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: ${(props) => props.theme.colors.gray};
+  background-color: ${(props) => props.theme.colors.white2};
 
   display: flex;
   align-items: center;

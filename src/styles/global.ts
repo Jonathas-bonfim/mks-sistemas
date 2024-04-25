@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme.colors.white};
+    background: ${(props) => props.theme.colors.white2};
     color: ${(props) => props.theme.colors.dark2};
   }
 
@@ -38,9 +38,6 @@ export const GlobalStyle = createGlobalStyle`
       padding-inline: 1rem;
       margin: 0 auto;
 
-      img {
-        width: 100%;
-      }
     }
   }
 `;
