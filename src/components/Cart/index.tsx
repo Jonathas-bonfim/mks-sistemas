@@ -13,7 +13,7 @@ export function Cart({ visible = false, setVisible }: CartProps) {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+      if (cartRef?.current && !cartRef?.current.contains(event.target as Node)) {
         setVisible(false);
       }
     }
@@ -45,6 +45,7 @@ export function Cart({ visible = false, setVisible }: CartProps) {
               </button>
             </header>
             <main>
+              <Item />
               <Item />
             </main>
             <footer>

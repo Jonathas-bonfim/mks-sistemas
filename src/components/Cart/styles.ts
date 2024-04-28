@@ -16,6 +16,16 @@ export const CartContainer = styled.section`
   box-shadow: -5px 0px 6px 0px #00000021;
   background-color: ${(props) => props.theme.colors.blue};
 
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.375rem;
+
+    height: 100%;
+    overflow-y: auto;
+    padding-block: 0.5rem;
+  }
+
   header,
   main,
   footer > .top {
@@ -46,6 +56,9 @@ export const CartContainer = styled.section`
   footer {
     height: 12.125rem;
     width: 100%;
+
+    position: relative;
+    bottom: 0;
 
     .top {
       display: flex;
