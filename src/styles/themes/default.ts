@@ -7,7 +7,12 @@ export const defaultTheme = {
     white3: "#EEEEEE",
 
     blue: "#0F52BA",
+
     dark: "#373737",
     dark2: "#2C2C2C",
+
+    black: "#000000",
+
+    gray: "#BFBFBF",
   },
 };
