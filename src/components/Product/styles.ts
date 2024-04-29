@@ -23,6 +23,13 @@ export const ProductContainer = styled.section`
     object-fit: contain;
   }
 
+  .motion-div-image {
+    width: 7rem;
+    height: 8.625rem;
+
+    object-fit: contain;
+  }
+
   .title,
   p {
     padding-inline: 0.5rem;
