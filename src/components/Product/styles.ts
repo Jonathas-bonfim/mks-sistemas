@@ -5,8 +5,11 @@ export const ProductContainer = styled.section`
   align-items: center;
   flex-direction: column;
 
+  position: relative;
+
   width: 13.625rem;
-  height: 17.812rem;
+  max-height: 17.812rem;
+  height: 100%;
 
   background-color: ${(props) => props.theme.colors.white};
   box-shadow: 0px 2px 8px 0px #00000022;
@@ -14,10 +17,10 @@ export const ProductContainer = styled.section`
 
   img {
     width: 7rem;
-    height: auto;
+    height: 8.625rem;
 
     margin-block: 1.125rem 0.875rem;
-    object-fit: fill;
+    object-fit: contain;
   }
 
   .title,
@@ -29,6 +32,9 @@ export const ProductContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+
+    height: 2.375rem;
 
     margin-bottom: 0.5rem;
 

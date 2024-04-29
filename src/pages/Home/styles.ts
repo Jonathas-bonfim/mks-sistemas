@@ -14,6 +14,7 @@ export const HomeContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     gap: 1.375rem;
     flex-wrap: wrap;

@@ -1,11 +1,12 @@
 import { HeaderContainer } from "./styles";
 
+import { useState } from "react";
+import { Cart } from "../Cart";
+
+import cartIcon from '../../assets/icons/cart.svg';
 import mksImage from '../../assets/images/MKS.svg';
 import sistemasImage from '../../assets/images/Sistemas.svg';
 
-import { useState } from "react";
-import cartIcon from '../../assets/icons/cart.svg';
-import { Cart } from "../Cart";
 
 export function Header() {
   const [cartVisible, setCartVisible] = useState(false)

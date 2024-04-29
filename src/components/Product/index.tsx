@@ -1,24 +1,29 @@
 import { ProductContainer } from "./styles";
 
-import productImage from '../../assets/images/product-image.png';
-
 import bagIcon from '../../assets/icons/shopping-bag.svg';
 
-export function Product() {
+interface ProductComponentProps {
+  name: string;
+  description: string;
+  price: string;
+  photo: string;
+}
+
+export function Product({ name, description, price, photo }: ProductComponentProps) {
   return (
     <ProductContainer>
       <img
-        src={productImage}
+        src={photo}
         alt="Imagem do produto"
       />
 
       <article className="title">
-        <h4>Apple Watch Series 4 GPS</h4>
+        <h4>{name}</h4>
         <div>
-          <p>R$399</p>
+          <p>{`${price}`}</p>
         </div>
       </article>
-      <p className="description">Redesigned from scratch and completely revised.</p>
+      <p className="description">{description.substring(0, 50) + '...'}</p>
 
       <button>
         <img src={bagIcon} alt="Ícone de compra" />
