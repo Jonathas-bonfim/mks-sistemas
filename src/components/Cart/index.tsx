@@ -7,7 +7,7 @@ import { CartContainer } from './styles';
 
 interface CartProps {
   visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function Cart({ visible = false, setVisible }: CartProps) {
@@ -19,7 +19,7 @@ export function Cart({ visible = false, setVisible }: CartProps) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (cartRef?.current && !cartRef?.current.contains(event.target as Node)) {
-        setVisible(false);
+        if (setVisible) setVisible(false);
       }
     }
 
@@ -35,7 +35,7 @@ export function Cart({ visible = false, setVisible }: CartProps) {
   }, [visible, setVisible]);
 
   useEffect(() => {
-    const priceProducts = cart.reduce((sumTotal, product) => {
+    const priceProducts = cart?.reduce((sumTotal, product) => {
       return sumTotal = sumTotal + (product.quantity as number * Number(product?.price))
     }, 0)
     setTotalValue(priceProducts)
@@ -51,7 +51,7 @@ export function Cart({ visible = false, setVisible }: CartProps) {
               <h4>Carrinho de compras</h4>
               <button
                 onClick={() => {
-                  setVisible(false);
+                  if (setVisible) setVisible(false);
                 }}
               >
                 <img src={xBigger} alt="" />

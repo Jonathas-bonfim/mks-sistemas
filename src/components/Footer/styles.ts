@@ -5,7 +5,7 @@ export const FooterContainer = styled.footer`
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: ${(props) => props.theme.colors.white2};
+  background-color: ${(props) => props?.theme?.colors?.white3};
 
   display: flex;
   align-items: center;
@@ -17,6 +17,6 @@ export const FooterContainer = styled.footer`
     font-weight: 400;
     font-size: 0.75rem;
     line-height: 150%;
-    color: ${(props) => props.theme.colors.dark};
+    color: ${(props) => props?.theme?.colors?.dark};
   }
 `;

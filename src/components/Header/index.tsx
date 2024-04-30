@@ -18,7 +18,7 @@ export function Header() {
     <>
       <HeaderContainer>
         <main className="container-center">
-          <section className="logo">
+          <section data-testid="header" className="logo">
             <img
               src={mksImage}
               alt=""

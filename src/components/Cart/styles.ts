@@ -14,7 +14,7 @@ export const CartContainer = styled.section`
   height: 100vh;
 
   box-shadow: -5px 0px 6px 0px #00000021;
-  background-color: ${(props) => props.theme.colors.blue};
+  background-color: ${(props) => props?.theme?.colors?.blue};
 
   main {
     display: flex;
@@ -40,7 +40,7 @@ export const CartContainer = styled.section`
     h4 {
       font-weight: 700;
       font-size: 1.687rem;
-      color: ${(props) => props.theme.colors.white};
+      color: ${(props) => props?.theme?.colors?.white};
       max-width: 11.25rem;
     }
 
@@ -49,7 +49,7 @@ export const CartContainer = styled.section`
       height: 2.375rem;
       border-radius: 50%;
       border: none;
-      background-color: ${(props) => props.theme.colors.black};
+      background-color: ${(props) => props?.theme?.colors?.black};
     }
   }
 
@@ -72,7 +72,7 @@ export const CartContainer = styled.section`
         font-weight: 700;
         font-size: 1.75rem;
         line-height: 0.937rem;
-        color: ${(props) => props.theme.colors.white};
+        color: ${(props) => props?.theme?.colors?.white};
       }
     }
 
@@ -87,8 +87,8 @@ export const CartContainer = styled.section`
 
       font-weight: 700;
       font-size: 1.75rem;
-      color: ${(props) => props.theme.colors.white};
-      background-color: ${(props) => props.theme.colors.black};
+      color: ${(props) => props?.theme?.colors?.white};
+      background-color: ${(props) => props?.theme?.colors?.black};
 
       &:disabled {
         cursor: not-allowed;
