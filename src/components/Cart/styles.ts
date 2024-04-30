@@ -89,6 +89,11 @@ export const CartContainer = styled.section`
       font-size: 1.75rem;
       color: ${(props) => props.theme.colors.white};
       background-color: ${(props) => props.theme.colors.black};
+
+      &:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+      }
     }
   }
 `;

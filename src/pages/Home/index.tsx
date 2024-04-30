@@ -1,21 +1,15 @@
-import { useEffect } from "react";
 import { Product } from "../../components/Product";
-import { productProps, useGetProducts, useGetProductsProps } from "../../reactQuery/queries/useGetProducts";
+import { ProductProps, useGetProducts } from "../../reactQuery/queries/useGetProducts";
 import { FormatPrice } from "../../utils/formatPrice";
 import { HomeContainer } from "./styles";
 
 
 export function Home() {
-  const params: useGetProductsProps = {
+
+  const { data: products, isLoading } = useGetProducts({
     page: 1,
     rows: 50,
-  }
-
-  const { data: products, isLoading } = useGetProducts(params)
-
-  useEffect(() => {
-    console.log({ products })
-  }, [products])
+  })
 
   return (
     <HomeContainer>
@@ -36,8 +30,10 @@ export function Home() {
               <>
                 <article className="products">
                   {
-                    products?.products?.map((product: productProps) => {
+                    products?.products?.map((product: ProductProps) => {
                       return <Product
+                        key={product?.id}
+                        id={product?.id}
                         name={product?.name}
                         description={product?.description}
                         photo={product?.photo}

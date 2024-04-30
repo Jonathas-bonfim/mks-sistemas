@@ -1,6 +1,7 @@
 import { HeaderContainer } from "./styles";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from '../../Hooks/context/useCart';
 import { Cart } from "../Cart";
 
 import cartIcon from '../../assets/icons/cart.svg';
@@ -10,6 +11,8 @@ import sistemasImage from '../../assets/images/Sistemas.svg';
 
 export function Header() {
   const [cartVisible, setCartVisible] = useState(false)
+
+  const { cart } = useContext(CartContext)
 
   return (
     <>
@@ -34,7 +37,11 @@ export function Header() {
               }}
             >
               <img src={cartIcon} alt="" />
-              <p>2</p>
+              {
+                cart?.length > 0 && (
+                  <p>{cart?.length ?? 0}</p>
+                )
+              }
             </button>
           </section>
         </main>

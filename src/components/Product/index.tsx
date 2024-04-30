@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { ProductContainer } from "./styles";
 
+import { useContext } from "react";
+import { CartContext } from "../../Hooks/context/useCart";
 import bagIcon from '../../assets/icons/shopping-bag.svg';
 
 interface ProductComponentProps {
+  id?: number;
   name: string;
   description: string;
   price: string;
@@ -11,7 +14,14 @@ interface ProductComponentProps {
   loading?: boolean;
 }
 
-export function Product({ name, description, price, photo, loading = false }: ProductComponentProps) {
+export function Product({ id, name, description, price, photo, loading = false }: ProductComponentProps) {
+
+  const { addProduct } = useContext(CartContext)
+
+  function handleAddToCart(productId: number) {
+    addProduct(productId);
+  }
+
   return (
     <>
       {
@@ -39,7 +49,11 @@ export function Product({ name, description, price, photo, loading = false }: Pr
             </article>
             <p className="description">{description.substring(0, 50) + '...'}</p>
 
-            <button>
+            <button
+              onClick={() => {
+                handleAddToCart(id as number)
+              }}
+            >
               <img src={bagIcon} alt="Ícone de compra" />
               Comprar
             </button>

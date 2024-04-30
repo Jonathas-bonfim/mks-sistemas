@@ -2,31 +2,73 @@ import { ItemContainer } from "./styles";
 
 import xSmaller from '../../../../assets/icons/x-smaller.svg';
 
-import productImage from '../../../../assets/images/product-image.png';
+import { useContext, useEffect, useState } from "react";
+import { CartContext, ProductContextProps } from "../../../../Hooks/context/useCart";
 
-export function Item() {
+interface itemProps {
+  cartItem: ProductContextProps
+}
+
+export function Item({ cartItem }: itemProps) {
+
+  const { removeProduct, updateProductQuantity } = useContext(CartContext)
+
+  const [value, setValue] = useState(cartItem?.quantity ?? 0 as number)
+
+
+  useEffect(() => {
+    updateProductQuantity(cartItem?.id as number, value)
+  }, [value])
+
   return (
     <ItemContainer>
       <article className="left">
-        <img src={productImage} alt="Imagem do produto" />
-        <h5>Apple Watch Series 4 GPS</h5>
+        <img src={cartItem?.photo} alt="Imagem do produto" />
+        <h5>{cartItem?.name}</h5>
       </article>
 
       <article className="middle">
         <nav className="circle">
-          <button className="button-add">-</button>
+          <button
+            className="button-add"
+            onClick={() => {
+              setValue(prev => prev - 1)
+            }}
+            disabled={value <= 1}
+          >
+            -
+          </button>
           <div className="gap"></div>
-          <input type="number" name="" id="" />
+          <input
+            type="number"
+            name=""
+            id=""
+            value={value}
+            onChange={(e) => {
+              setValue(Number(e?.target?.value))
+            }}
+          />
           <div className="gap"></div>
-          <button className="button-decrease" >+</button>
+          <button
+            className="button-decrease"
+            onClick={() => {
+              setValue(prev => prev + 1)
+            }}
+          >
+            +
+          </button>
         </nav>
       </article>
 
       <article className="right">
-        <p>R$399</p>
+        <p>{cartItem?.price}</p>
       </article>
 
-      <button className="button-remove">
+      <button className="button-remove"
+        onClick={() => {
+          removeProduct(cartItem?.id as number)
+        }}
+      >
         <img src={xSmaller} alt="" />
       </button>
 

@@ -10,11 +10,11 @@ export interface useGetProductsProps {
 
 export interface productsProps {
   count: number;
-  products: productProps[];
+  products: ProductProps[];
 }
 
-export interface productProps {
-  id: number;
+export interface ProductProps {
+  id?: number;
   name: string;
   description: string;
   brand: string;

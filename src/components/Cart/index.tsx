@@ -1,5 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { CartContext } from '../../Hooks/context/useCart';
 import xBigger from '../../assets/icons/x-bigger.svg';
+import { FormatPrice } from '../../utils/formatPrice';
 import { Item } from './components/Item';
 import { CartContainer } from './styles';
 
@@ -10,6 +12,9 @@ interface CartProps {
 
 export function Cart({ visible = false, setVisible }: CartProps) {
   const cartRef = useRef<HTMLDivElement>(null);
+  const { cart, FinalizeBuy } = useContext(CartContext);
+
+  const [totalValue, setTotalValue] = useState(0)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -29,6 +34,14 @@ export function Cart({ visible = false, setVisible }: CartProps) {
     };
   }, [visible, setVisible]);
 
+  useEffect(() => {
+    const priceProducts = cart.reduce((sumTotal, product) => {
+      return sumTotal = sumTotal + (product.quantity as number * Number(product?.price))
+    }, 0)
+    setTotalValue(priceProducts)
+
+  }, [cart])
+
   return (
     <>
       {visible && (
@@ -44,17 +57,36 @@ export function Cart({ visible = false, setVisible }: CartProps) {
                 <img src={xBigger} alt="" />
               </button>
             </header>
-            <main>
-              <Item />
-              <Item />
-            </main>
+            {
+              cart?.length > 0 ? (
+                <>
+                  <main>
+                    {
+                      cart.map((cartItem) => {
+                        return <Item cartItem={cartItem} />
+                      })
+                    }
+                  </main>
+                </>
+              ) : (
+                <p style={{ color: 'white', textAlign: 'center' }} >Nenhum item foi adicionado!</p>
+              )
+            }
             <footer>
               <article className="top">
                 <b className="total-text">Total</b>
-                <b className="total-value">R$798</b>
+                <b className="total-value">{FormatPrice({ value: totalValue, maximumFractionDigits: 2, minimumFractionDigits: 2 })}</b>
               </article>
-              <button>Finalizar Compra</button>
+              <button
+                onClick={() => {
+                  FinalizeBuy()
+                }}
+                disabled={cart?.length <= 0}
+              >
+                Finalizar Compra
+              </button>
             </footer>
+
           </CartContainer>
         </>
       )}
